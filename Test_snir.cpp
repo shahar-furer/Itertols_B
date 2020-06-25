@@ -154,8 +154,7 @@ TEST_CASE("Test Filterfalse")
     result.clear();
     j = 0;
     result = {-99,-20,-2,-1,0};
-        set<int> myset2 = {-20,-2,-1,0,1,3,4,5,6,7,8,20,30,40,50,60,70,72,80,90,-99,100};
-        cout<<"test two"<<endl;
+    set<int> myset2 = {-20,-2,-1,0,1,3,4,5,6,7,8,20,30,40,50,60,70,72,80,90,-99,100};
     for (auto i: filterfalse([](int i){return i > 0;}, myset2) )
     {
         CHECK(i == result.at(j));
@@ -167,7 +166,6 @@ TEST_CASE("Test Filterfalse")
     j = 0;
     result = {-99};
     set<int> myset3 = {-20,-2,-1,0,1,3,4,5,6,7,8,20,30,40,50,60,70,72,80,90,-99,100};
-    cout<<"test trhee"<<endl;
     for (auto i: filterfalse([](int i){return i > -99;}, myset2) )
     {
         CHECK(i == result.at(j));
@@ -180,16 +178,8 @@ TEST_CASE("Test Filterfalse")
     j = 0;
     result = {};
     set<int> myset4 = {-20,-2,-1,0,1,3,4,5,6,7,8,20,30,40,50,60,70,72,80,90,-99,100};
-    myset2 = {-20,-2,-1,0,1,3,4,5,6,7,8,20,30,40,50,60,70,72,80,90,-99,100};
-    cout<<myset2.size()<<endl;
-    cout<<"***************************************************"<<endl;
-    for (auto i: filterfalse([](int i){  return i>=-99;}, myset2) )
+    for (auto i: filterfalse([](int i){return i >= -99;}, myset2) )
     {
-        //cout<<typeid(i).name()<<endl;
-        cout<<"i am here"<<endl;
-
-        cout<<i<<endl;
-
         CHECK(0 == 1); // not need to get in
         ++j;
     }
@@ -246,10 +236,9 @@ TEST_CASE("Test Compress")
     j = 0;
 
     vector<bool> myVectorBool2 {false,false,false,false,false,false,false,false,false,false,false};
-
+    
     for (auto i: compress(string("InotLoveC++"), myVectorBool2))
     {
-        printf("%c nnghj\n",i);
         CHECK(0==1); // not need to get in
         ++j;
     }
